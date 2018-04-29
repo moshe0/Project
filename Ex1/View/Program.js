@@ -44,6 +44,7 @@ function processInput(answer) {
             rl.question('Press any key to continue:' + "\n", processContinue);
             break;
         case '11':
+            rl.close();
             process.exit();
             break;
         default:
