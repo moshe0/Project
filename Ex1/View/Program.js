@@ -76,9 +76,7 @@ function processUserAge(age) {
         }
         else if(actionTypeUser === 2){
             user.Name = tmp_userName;
-            u2G.RemoveUserFromGroups(tmp_userName);
             users.UpdateUser(tmp_userName, user);
-            u2G.AddUserToGroups(user.Name);
         }
         rl.question('Press any key to continue:' + "\n", processContinue);
     }

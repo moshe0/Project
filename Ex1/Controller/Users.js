@@ -29,7 +29,8 @@ Users.prototype={
     function UpdateUser(userNameTarget, user){
         var res = this.UserIndexOf(this.users, userNameTarget);
         if(res > -1) {
-            this.users.splice(res, 1, Object.assign({}, user));
+            this.users[res].Password = user.Password;
+            this.users[res].Age = user.Age;
             console.log('user updated!!!');
         }
         else
