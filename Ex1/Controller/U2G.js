@@ -5,6 +5,7 @@ const GroupsType = require('./../Controller/Groups');
 function U2G(u, g) {
     this.users = u;
     this.groups = g;
+    this.groupsToUpdate = [];
 }
 
 U2G.prototype= {
@@ -61,15 +62,18 @@ U2G.prototype= {
 
         RemoveUserFromGroups:
         function RemoveUserFromGroups(userName){
+            groupsToUpdate = [];
             for (var key in this.groups) {
-                this.RemoveUserFromGroup(key, userName);
+                var res = this.RemoveUserFromGroup(key, userName);
+                if(res.includes('deleted') === true)
+                    groupsToUpdate.push(key);
             }
         },
 
         AddUserToGroups:
         function AddUserToGroups(userName){
-            for (var key in this.groups) {
-                this.AddUserToGroup(key, userName);
+            for (var i=0 ; i< groupsToUpdate.length ; i++) {
+                this.AddUserToGroup(groupsToUpdate[i], userName);
             }
         },
 

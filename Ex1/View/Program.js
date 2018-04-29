@@ -74,6 +74,7 @@ function processUserAge(age) {
             users.AddUser(user);
         }
         else if(actionTypeUser === 2){
+            user.Name = tmp_userName;
             u2G.RemoveUserFromGroups(tmp_userName);
             users.UpdateUser(tmp_userName, user);
             u2G.AddUserToGroups(user.Name);
@@ -93,7 +94,7 @@ function processDeleteUser(name) {
 
 function processUpdateUser(name) {
     tmp_userName = name;
-    rl.question('Enter user name:' + "\n", processUserName);
+    rl.question('Enter user password:' + "\n", processUserPassword);
 }
 
 
