@@ -1,4 +1,5 @@
 const UserType = require('./../Model/User');
+const GroupType = require('./../Model/Group');
 const UsersType = require('./../Controller/Users');
 const GroupsType = require('./../Controller/Groups');
 const U2G = require('./../Controller/U2G');
@@ -99,7 +100,9 @@ function processUpdateUser(name) {
 
 
 function processAddGroup(name) {
-    groups.AddGroup(name);
+    group.Name = name;
+    group.Users = [];
+    groups.AddGroup(group);
     rl.question('Press any key to continue:' + "\n", processContinue);
 }
 
@@ -128,6 +131,7 @@ function processUserGroup_u(user) {
 
 
 user = new UserType();
+group = new GroupType();
 users = new UsersType();
 groups = new GroupsType();
 u2G = new U2G(users.users, groups.groups);
